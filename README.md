@@ -1,8 +1,8 @@
-# ChatLuna Koishi 模板
+# 🌙 ChatLuna Koishi 模板
 
 以 ChatLuna 为核心的 Koishi 部署模板。预装并预配置 `adapter-onebot`、ChatLuna 系列插件、`sidebar-manager`、`logger-plus`、`without-assignee`、`change-auth-callme`、`ffmpeg-path` 和 `markdown`。
 
-## 部署方式
+## 🚀 部署方式
 
 提供 Docker 与 Windows Desktop 两类入口。
 
@@ -13,9 +13,9 @@ Docker 方式提供两种 Compose，二选一：
 | `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
 | `docker-compose.yml` | 同时启动 Koishi + LLBot + PMHQ，自动通过 OneBot 11 反向 WS 对接 |
 
-## 使用方式
+## 🧩 使用方式
 
-### Docker
+### 🐳 Docker
 
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
 2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`。
@@ -34,7 +34,7 @@ docker compose up -d --build
 6. 如使用 LLBot 方式，打开 LLBot WebUI：`http://服务器地址:3080`，完成 QQ 登录。
 7. 参考下方“首次配置”，完成剩余配置。
 
-### Windows Desktop
+### 🖥️ Windows Desktop
 
 Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，自动生成与 Docker 版一致的 Koishi 配置；如果需要接入 QQ，可以额外安装并配置 LLBot Desktop。
 
@@ -67,7 +67,7 @@ ws://127.0.0.1:5140/onebot
 
 如果启用了 OneBot Token，需要和脚本中填写的 Token 保持一致。
 
-## 网络环境
+## 🌐 网络环境
 
 Koishi 镜像构建时会安装插件依赖，Docker 方式通过 `.env` 中的 `NPM_REGISTRY` 选择 npm 源。Windows Desktop 方式使用 Koishi Desktop 自身环境，不需要用户单独处理 npm。
 
@@ -95,7 +95,7 @@ docker compose -f docker-compose.koishi.yml up -d --build
 docker compose up -d --build
 ```
 
-## 首次配置
+## ⚙️ 首次配置
 
 部署完成后，还需要完成以下配置才能正常使用：
 
@@ -106,14 +106,14 @@ docker compose up -d --build
 
 - [ChatLuna 快速上手](https://chatluna.chat/guide/getting-started.html)
 
-## 后续维护
+## 🔧 后续维护
 
 本模板仅用于初次部署。部署完成后，后续的插件更新、容器更新等操作请按照各项目官方文档进行：
 
 - **Koishi 插件更新**：在 Koishi 控制台的「依赖管理」中操作。
 - **LLBot / NapCat 等 OneBot 实现更新**：参阅对应项目的官方文档。
 
-## OneBot 对接说明
+## 🤖 OneBot 对接说明
 
 模板已预置 `adapter-onebot`，协议为 `ws-reverse`，监听路径为 `/onebot`。你可以使用任何支持 OneBot 11 协议的实现（如 LLBot、NapCat 等）来对接。
 
@@ -130,7 +130,7 @@ LLBot 的安装和配置请参阅官方文档：
 
 `ONEBOT_TOKEN` 默认留空。如果启用 token，需要确保 Koishi 和 OneBot 实现使用相同的 token。Docker 版中 Koishi 和 LLBot 会同时读取 `.env` 中的同一个环境变量。
 
-## 目录说明
+## 📁 目录说明
 
 ```text
 .
@@ -152,10 +152,10 @@ LLBot 的安装和配置请参阅官方文档：
     └── qq/                     # QQ 登录数据（启动后生成）
 ```
 
-## 安全说明
+## 🔒 安全说明
 
 请不要将填写后的 `.env`、LLBot 登录数据、QQ 登录数据或 Koishi 数据库公开上传。
 
-## 许可证
+## 📜 许可证
 
 本项目基于 GPL-3.0 协议发布。
