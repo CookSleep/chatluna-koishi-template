@@ -78,7 +78,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 2. （可选）如果需要接入 QQ，跟随 LLBot 文档完成 Windows 版下载、解压、启动和登录：  
    <https://luckylillia.com/guide/choice_install>
 
-3. 推荐在 [Releases](https://github.com/CookSleep/chatluna-koishi-template/releases/latest) 下载 `ChatLuna-Koishi-Windows-Desktop-Setup.exe`。
+3. 下载 [`ChatLuna-Koishi-Windows-Desktop-Setup.exe`](https://github.com/CookSleep/chatluna-koishi-template/releases/latest/download/ChatLuna-Koishi-Windows-Desktop-Setup.exe)。
 
 4. 运行脚本前，通过 **任务栏右键 Koishi 图标 → 高级 → 停止并退出** 退出 Koishi Desktop。
 
