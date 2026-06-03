@@ -1,12 +1,32 @@
+<div align="center">
+
 # 🌙 ChatLuna Koishi 模板
 
-以 ChatLuna 为核心的 Koishi 部署模板。
+[![GitHub Repo stars](https://img.shields.io/github/stars/CookSleep/chatluna-koishi-template?style=flat-square&color=eab308)](https://github.com/CookSleep/chatluna-koishi-template/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/CookSleep/chatluna-koishi-template?style=flat-square&color=3b82f6)](https://github.com/CookSleep/chatluna-koishi-template/network/members)
+[![License](https://img.shields.io/badge/license-GPL--3.0-10b981?style=flat-square)](https://github.com/CookSleep/chatluna-koishi-template/blob/main/LICENSE)
+[![Koishi](https://img.shields.io/badge/Koishi-4.18-20232A?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PC9zdmc+&logoColor=white)](https://koishi.chat/)
+[![ChatLuna](https://img.shields.io/badge/ChatLuna-1.4-946ce6?style=flat-square)](https://chatluna.chat/)
 
-预装并预配置：`adapter-onebot`、ChatLuna 系列插件、`sidebar-manager`、`logger-plus`、`without-assignee`、`change-auth-callme`、`ffmpeg-path`、`markdown`。
+**以 ChatLuna 为核心的 Koishi 一键部署模板**
+
+预装并预配置 `adapter-onebot`、ChatLuna 系列插件、`sidebar-manager`、`logger-plus`、`without-assignee`、`change-auth-callme`、`ffmpeg-path`、`markdown` 等。<br>
+支持 Docker 与 Windows Desktop 两种部署方式，开箱即用。
+
+</div>
 
 ---
 
-## 🚀 部署方式
+## ✨ 核心特性
+
+- **开箱即用**：预装 ChatLuna 全家桶及常用辅助插件，免去手动逐一安装配置的繁琐流程。
+- **多平台部署**：提供 Docker Compose 与 Windows Desktop 一键配置脚本，覆盖服务器和桌面场景。
+- **灵活对接**：内置 OneBot 11 反向 WebSocket 适配器，兼容 LLBot、NapCat 等任意 OneBot 实现。
+- **网络友好**：支持切换 npm 源（官方 / npmmirror），国内外网络均可顺畅部署。
+
+---
+
+## 🚀 部署与使用
 
 提供 **Docker** 与 **Windows Desktop** 两类入口。
 
@@ -17,11 +37,8 @@ Docker 方式提供两种 Compose，二选一：
 | `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
 | `docker-compose.yml` | 同时启动 Koishi + LLBot + PMHQ，自动通过 OneBot 11 反向 WS 对接 |
 
----
-
-## 🧩 使用方式
-
-### 🐳 Docker
+<details>
+<summary><strong>🐳 方式一：Docker 部署</strong></summary>
 
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
 
@@ -45,15 +62,16 @@ Docker 方式提供两种 Compose，二选一：
 
 7. 参考下方「⚙️ 首次配置」，完成剩余配置。
 
----
+</details>
 
-### 🖥️ Windows Desktop
+<details>
+<summary><strong>🖥️ 方式二：Windows Desktop</strong></summary>
 
 Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，自动生成与 Docker 版一致的 Koishi 配置。
 
 如果需要接入 QQ，可以额外安装并配置 LLBot Desktop。
 
-#### 步骤
+**步骤**
 
 1. 安装 Koishi Desktop：<https://k.ilharp.cc/win.msi>
 
@@ -71,7 +89,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 
 7. 按提示选择 npm 源，并填写 Koishi 控制台用户名和密码、机器人 QQ、OneBot Token。
 
-#### 脚本会自动完成
+**脚本会自动完成**
 
 - 寻找 Koishi Desktop 实例目录或创建新实例
 - 备份旧的 `koishi.yml` 和 `package.json`
@@ -83,13 +101,13 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 - 写入机器人 QQ 和 OneBot Token
 - 可选配置 LLBot Desktop 的 OneBot 11 反向 WebSocket
 
-#### 完成后
+**完成后**
 
 脚本执行完成后，打开或重启 Koishi Desktop。
 
 > 如果脚本提示依赖安装失败（找不到 `koi.exe`），请在 Koishi Desktop 侧栏的「依赖管理」中更新依赖。
 
-#### 手动对接 OneBot
+**手动对接 OneBot**
 
 如果之后需要接入 QQ，但没有使用脚本自动配置 LLBot，请在 LLBot Desktop 中启用 OneBot 11 反向 WebSocket，并填写：
 
@@ -99,20 +117,18 @@ ws://127.0.0.1:5140/onebot
 
 如果启用了 OneBot Token，需要和脚本中填写的 Token 保持一致。
 
+</details>
+
 ---
 
 ## 🌐 网络环境
 
-Koishi 插件依赖通过 npm registry 下载。
-
-本项目支持选择 npm 源：
+Koishi 插件依赖通过 npm registry 下载。本项目支持选择 npm 源：
 
 - **Docker**：通过 `.env` 中的 `NPM_REGISTRY` 选择。
 - **Windows Desktop**：运行脚本时交互选择，脚本会把结果写入 Koishi 实例的 `.yarnrc.yml`。
 
 > Koishi 自带的 `market` 的 `registry.endpoint` 似乎无效。
-
-可选源如下。
 
 **国际网络**推荐使用官方源：
 
@@ -218,6 +234,6 @@ LLBot 的安装和配置请参阅官方文档：
 
 ---
 
-## 📜 许可证
+## 📄 许可证
 
 本项目基于 [GPL-3.0](LICENSE) 协议发布。
