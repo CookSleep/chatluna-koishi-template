@@ -1,4 +1,6 @@
 .env
+__pycache__/
+*.py[cod]
 koishi/data/
 koishi/locales/
 koishi/node_modules/
