@@ -1,0 +1,43 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Windows Desktop setup EXE
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: python -m pip install --upgrade pip pyinstaller
+
+      - name: Build EXE
+        run: python -m PyInstaller --onefile --console --name ChatLuna-Koishi-Windows-Desktop-Setup --add-data "koishi;koishi" scripts/setup_windows_desktop.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChatLuna-Koishi-Windows-Desktop-Setup
+          path: dist/ChatLuna-Koishi-Windows-Desktop-Setup.exe
+          if-no-files-found: error
+
+      - name: Upload release asset
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/ChatLuna-Koishi-Windows-Desktop-Setup.exe

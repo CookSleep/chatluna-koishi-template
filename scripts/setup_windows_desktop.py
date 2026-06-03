@@ -7,11 +7,25 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
+def resource_root() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(getattr(sys, "_MEIPASS", Path(sys.executable).parent))
+    return Path(__file__).resolve().parents[1]
+
+
+def app_root() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return resource_root()
+
+
+ROOT = resource_root()
+APP_ROOT = app_root()
 TEMPLATE_KOISHI_YML = ROOT / "koishi" / "koishi.yml"
 TEMPLATE_PACKAGE_JSON = ROOT / "koishi" / "package.json"
 DEFAULT_NPM_REGISTRY = "https://registry.npmjs.org"
@@ -324,7 +338,7 @@ def install_koishi_dependencies(target_path: Path) -> None:
 
 
 def find_llbot_candidates() -> list[Path]:
-    roots = [ROOT, ROOT.parent, Path.home() / "Desktop", Path.home() / "Downloads", Path("C:/LLBot"), Path("D:/LLBot")]
+    roots = [APP_ROOT, APP_ROOT.parent, Path.home() / "Desktop", Path.home() / "Downloads", Path("C:/LLBot"), Path("D:/LLBot")]
     candidates: list[Path] = []
     for root in roots:
         if not root.exists():

@@ -78,16 +78,17 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 2. （可选）如果需要接入 QQ，跟随 LLBot 文档完成 Windows 版下载、解压、启动和登录：  
    <https://luckylillia.com/guide/choice_install>
 
-3. 下载并解压[最新版本源码](https://github.com/CookSleep/chatluna-koishi-template/archive/refs/tags/v1.0.0.zip)。
+3. 推荐在 [Releases](https://github.com/CookSleep/chatluna-koishi-template/releases/latest) 下载 `ChatLuna-Koishi-Windows-Desktop-Setup.exe`。
 
-4. 安装 Python 3：<https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe>  
-   安装时勾选 **"Add python.exe to PATH"**。
+4. 运行脚本前，通过 **任务栏右键 Koishi 图标 → 高级 → 停止并退出** 退出 Koishi Desktop。
 
-5. 运行脚本前，通过 **任务栏右键 Koishi 图标 → 高级 → 停止并退出** 退出 Koishi Desktop。
+5. 双击运行 `ChatLuna-Koishi-Windows-Desktop-Setup.exe`。
 
-6. 双击运行 `一键配置-Windows-Desktop.bat`。
+6. 按提示选择 npm 源，并填写 Koishi 控制台用户名和密码、机器人 QQ、OneBot Token。
 
-7. 按提示选择 npm 源，并填写 Koishi 控制台用户名和密码、机器人 QQ、OneBot Token。
+如果使用源码包而不是 exe，请下载并解压[最新源码](https://github.com/CookSleep/chatluna-koishi-template/archive/refs/heads/main.zip)，安装 Python 3 并勾选 **"Add python.exe to PATH"**，然后双击运行 `一键配置-Windows-Desktop.bat`。
+
+> `ChatLuna-Koishi-Windows-Desktop-Setup.exe` 由 GitHub Actions 自动构建。手动运行工作流时，可在 Actions 的 artifact 中下载；推送 `v*` 版本 tag 时，会自动附加到对应 GitHub Release。
 
 **脚本会自动完成**
 
