@@ -27,7 +27,7 @@ Docker 方式提供两种 Compose，二选一：
 
 2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`。
 
-3. 按你的网络环境选择 npm 源，见下方「🌐 网络环境」。
+3. 按你的网络环境选择 npm 源，并修改 `.env` 中的 `NPM_REGISTRY`，见下方「🌐 网络环境」。
 
 4. 启动：
 
@@ -69,7 +69,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 
 6. 双击运行 `一键配置-Windows-Desktop.bat`。
 
-7. 按提示填写 Koishi 控制台用户名和密码、机器人 QQ、OneBot Token。
+7. 按提示选择 npm 源，并填写 Koishi 控制台用户名和密码、机器人 QQ、OneBot Token。
 
 #### 脚本会自动完成
 
@@ -77,7 +77,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 - 备份旧的 `koishi.yml` 和 `package.json`
 - 写入与 Docker 版一致的 ChatLuna 模板配置
 - 同步与 Docker 版一致的插件依赖清单
-- 写入 `.yarnrc.yml`，让 Yarn 使用官方 npm registry
+- 写入 `.yarnrc.yml`，让 Yarn 使用你在脚本中选择的 npm 源
 - 使用 Koishi Desktop 自带的 Yarn 安装插件依赖
 - 写入 Koishi 控制台用户名和密码
 - 写入机器人 QQ 和 OneBot Token
@@ -103,11 +103,16 @@ ws://127.0.0.1:5140/onebot
 
 ## 🌐 网络环境
 
-Koishi 镜像构建时会安装插件依赖，Docker 方式通过 `.env` 中的 `NPM_REGISTRY` 选择 npm 源。
+Koishi 插件依赖通过 npm registry 下载。
 
-Windows Desktop 方式使用 Koishi Desktop 自身环境，不需要用户单独处理 npm。
+本项目支持选择 npm 源：
+
+- **Docker**：通过 `.env` 中的 `NPM_REGISTRY` 选择。
+- **Windows Desktop**：运行脚本时交互选择，脚本会把结果写入 Koishi 实例的 `.yarnrc.yml`。
 
 > Koishi 自带的 `market` 的 `registry.endpoint` 似乎无效。
+
+可选源如下。
 
 **国际网络**推荐使用官方源：
 
@@ -115,13 +120,13 @@ Windows Desktop 方式使用 Koishi Desktop 自身环境，不需要用户单独
 NPM_REGISTRY=https://registry.npmjs.org
 ```
 
-**国内网络**可改为国内镜像源：
+**国内网络**可选择国内镜像源：
 
 ```env
 NPM_REGISTRY=https://registry.npmmirror.com
 ```
 
-修改 `NPM_REGISTRY` 后，需要重新构建 Koishi 镜像才会生效：
+Docker 方式修改 `NPM_REGISTRY` 后，需要重新构建 Koishi 镜像才会生效：
 
 ```bash
 # 仅 Koishi
