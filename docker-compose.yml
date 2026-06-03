@@ -1,0 +1,121 @@
+name: chatluna-koishi-template
+
+services:
+  koishi:
+    build:
+      context: ./koishi
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
+    container_name: chatluna-template-koishi
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      KOISHI_AUTH_USERNAME: ${KOISHI_AUTH_USERNAME:-admin}
+      KOISHI_AUTH_PASSWORD: ${KOISHI_AUTH_PASSWORD:-change-me}
+      BOT_QQ: ${BOT_QQ:-123456789}
+      ONEBOT_TOKEN: ${ONEBOT_TOKEN:-}
+    ports:
+      - "5140:5140"
+    volumes:
+      - ./koishi/data:/koishi/data
+      - ./koishi/locales:/koishi/locales
+    networks:
+      - app_network
+
+  pmhq:
+    image: linyuchen/pmhq:${PMHQ_TAG:-latest}
+    container_name: chatluna-template-pmhq
+    privileged: true
+    restart: unless-stopped
+    environment:
+      ENABLE_HEADLESS: "false"
+      AUTO_LOGIN_QQ: ${BOT_QQ:-123456789}
+    volumes:
+      - ./llbot/qq:/root/.config/QQ
+      - ./llbot/data:/app/llbot/data:rw
+    networks:
+      - app_network
+
+  llbot:
+    image: linyuchen/llbot:${LLBOT_TAG:-latest}
+    container_name: chatluna-template-llbot
+    restart: unless-stopped
+    depends_on:
+      - koishi
+      - pmhq
+    environment:
+      PMHQ_HOST: pmhq
+      WEBUI_PORT: ${LLBOT_WEBUI_PORT:-3080}
+    ports:
+      - "${LLBOT_WEBUI_PORT:-3080}:${LLBOT_WEBUI_PORT:-3080}"
+    volumes:
+      - ./llbot/qq:/root/.config/QQ
+      - ./llbot/data:/app/llbot/data:rw
+    configs:
+      - source: llbot_default_config
+        target: /app/llbot/default_config.json
+      - source: llbot_webui_token
+        target: /app/llbot/data/webui_token.txt
+    networks:
+      - app_network
+
+configs:
+  llbot_default_config:
+    content: |
+      {
+        "webui": {
+          "enable": true,
+          "host": "",
+          "port": ${LLBOT_WEBUI_PORT:-3080}
+        },
+        "milky": {
+          "enable": false,
+          "reportSelfMessage": false,
+          "http": {
+            "host": "",
+            "port": 3010,
+            "prefix": "",
+            "accessToken": ""
+          },
+          "webhook": {
+            "urls": [],
+            "accessToken": ""
+          }
+        },
+        "satori": {
+          "enable": false,
+          "host": "",
+          "port": 5600,
+          "token": ""
+        },
+        "ob11": {
+          "enable": true,
+          "connect": [
+            {
+              "type": "ws-reverse",
+              "enable": true,
+              "url": "ws://koishi:5140/onebot",
+              "heartInterval": 60000,
+              "token": "${ONEBOT_TOKEN:-}",
+              "messageFormat": "array",
+              "reportSelfMessage": true,
+              "reportOfflineMessage": true,
+              "debug": false
+            }
+          ]
+        },
+        "log": true,
+        "autoDeleteFile": false,
+        "autoDeleteFileSecond": 60,
+        "musicSignUrl": "",
+        "msgCacheExpire": 120,
+        "onlyLocalhost": false,
+        "ffmpeg": "/usr/bin/ffmpeg"
+      }
+  llbot_webui_token:
+    content: |
+      ${LLBOT_WEBUI_TOKEN:-change-me}
+
+networks:
+  app_network:
+    driver: bridge

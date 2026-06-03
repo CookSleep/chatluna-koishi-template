@@ -1,0 +1,362 @@
+plugins:
+  group:3c9ht4:
+    $label: server
+    server:kc169w:
+      port: 5140
+      maxPort: 5149
+      host: 0.0.0.0
+    ~server-satori:9znrwq: {}
+    ~server-temp:axk9yg: {}
+
+  group:h9we7k:
+    $label: basic
+    admin:kgf940: {}
+    ~bind:2311uf: {}
+    commands:xgp1rq:
+      chatluna.preset.add:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.preset.list:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.preset:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.auto-update:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.create:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.delete:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.invite:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.kick:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.mute:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.permission:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.set:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.room.transfer:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.restart:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.model:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.embeddings:
+        config:
+          permissions:
+            - authority: 3
+      chatluna.chat.voice:
+        config:
+          permissions:
+            - authority: 3
+      status:
+        aliases:
+          status:
+            filter: false
+      dialogue.stats:
+        options:
+          help:
+            permissions:
+              - authority: 3
+      help:
+        aliases:
+          help:
+            filter: false
+      chatluna:
+        aliases:
+          chatluna:
+            filter: false
+        name: /chatluna
+    help:h3lo1q: {}
+    http:4ctvvw: {}
+    inspect:4ke26y: {}
+    locales:d3cd9u: {}
+    proxy-agent:tpkpjx: {}
+    rate-limit:pndz29: {}
+    telemetry:yzj4k3: {}
+
+  group:a3dn7d:
+    $label: console
+    actions:d8kdn7: {}
+    analytics:bhxhf0: {}
+    android:1f3ari:
+      $if: env.KOISHI_AGENT?.includes('Android')
+    auth:ykrm79:
+      admin:
+        username: "${{ env.KOISHI_AUTH_USERNAME }}"
+        password: "${{ env.KOISHI_AUTH_PASSWORD }}"
+    config:n6mlee: {}
+    console:0f7c8z:
+      open: true
+    dataview:hp7f7l: {}
+    desktop:3eoxov:
+      $if: env.KOISHI_AGENT?.includes('Desktop')
+    explorer:ct1fby: {}
+    ~logger:nc3ppr: {}
+    insight:bnzu13: {}
+    market:1uh06c:
+      search:
+        endpoint: https://registry.koishi.chat/index.json
+      registry: {}
+    notifier:8w5l53: {}
+    oobe:fvsr4j: {}
+    sandbox:d02xid: {}
+    status:rnfu4h: {}
+    theme-vanilla:qtzhnc: {}
+
+  group:03lpgp:
+    $label: storage
+    database-sqlite:rh7e7x:
+      path: data/koishi.db
+    assets-local:f8drt9: {}
+
+  group:odx1fg:
+    $label: adapter
+    adapter-onebot:0mnior:
+      selfId: "${{ env.BOT_QQ }}"
+      token: "${{ env.ONEBOT_TOKEN }}"
+      protocol: ws-reverse
+      path: /onebot
+    ~adapter-discord:r3k8vm: {}
+    ~adapter-qq:t2n5xp: {}
+    ~adapter-telegram:w7j4cd: {}
+
+  group:au1qbc:
+    $label: develop
+    $if: env.NODE_ENV === 'development'
+    hmr:1acn1h:
+      root: .
+
+  group:q8gq9w:
+    $label: chatluna
+
+    group:m5x9m1:
+      $label: 基础
+
+      chatluna:s7f1za:
+        attachForwardMsgIdToContext: true
+
+      chatluna-character:2tvb1a: {}
+
+      chatluna-storage-service:d5vv7s:
+        maxStorageSize: 2048
+        maxStorageCount: 99999
+        storageBackend: local
+        storeGeminiExtendedFileTypesInStorage: true
+
+      chatluna-multimodal-service:8hxy4p:
+        enableAudioFfmpegConversion: true
+        enableMultimodalTool: true
+        enableFileReadTool: true
+        fileInsertPrompt: ''
+        enableContextImageDescription: false
+        enableImageReadTool: true
+
+    group:jkaaqi:
+      $label: 扩展
+
+      ~chatluna-plugin-common:9cxm3b:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        request: false
+        requestSelector: []
+        group: true
+        groupScopeSelector: []
+        cron: false
+        chat: false
+        send: false
+        requestHeaders: []
+        requestMaxOutputLength: 3860000
+        chatTimeLimit: 2000
+        groupWhitelist: []
+        todosNotify: false
+        todos: false
+
+      ~chatluna-toolbox:c1y4wh:
+        injectXmlToolAsReplyTool: true
+        enablePokeXmlTool: true
+        enableEmojiXmlTool: true
+        enableDeleteXmlTool: true
+        groupInfo: {}
+        debugLogging: true
+
+      ~chatluna-forward-msg:x8t4k2:
+        imagePrompt: ''
+        imageService: {}
+        readTool: {}
+        describeImageTool:
+          enable: false
+
+      ~chatluna-long-memory:x0v9uf:
+        enabledLayers:
+          - Guild
+        layerEngines:
+          - layer: Global
+            engine: Basic
+          - layer: Preset
+            engine: Basic
+          - layer: Guild
+            engine: Basic
+          - layer: User
+            engine: Basic
+        longMemoryExtractInterval: 10
+
+      ~memesluna:f3ys03: {}
+
+      ~chatluna-llm-web-search:ru2yje:
+        webModelService: {}
+        xModelService: {}
+        webSearchTool:
+          enable: true
+        webReadTool:
+          enable: true
+        xSearchTool:
+          enable: true
+        xReadTool:
+          enable: true
+        grokBuiltinTools:
+          enable: true
+        imageService:
+          enable: true
+          taskConcurrency: 10
+
+      ~chatluna-qweather:7p8c2v:
+        tool:
+          enabled: true
+
+      ~chatluna-social-media-reader:lk8n1f:
+        bilibili:
+          maxDescLength: 1000
+          parseComments: true
+        cache:
+          maxMediaMB: 100
+        xiaohongshu:
+          maxImages: 10
+        timeoutSeconds: 60
+        commentImageService: {}
+
+      ~chatluna-google-reverse-image-search:m6b3nc:
+        timeoutSeconds: 20
+        maxResults: 10
+        cacheService:
+          enable: true
+          ttlSeconds: 86400
+          cleanupIntervalSeconds: 600
+        tool:
+          enabled: true
+          name: google_reverse_image_search
+        customPrompt: ''
+
+    group:0m324v:
+      $label: 高级
+
+      ~chatluna-agent:6zr1wk: {}
+
+      ~media-luna:cw5v7s: {}
+
+      ~chatluna-vector-store-service:e6yg0h: {}
+
+    group:b2ivz6:
+      $label: LLM API
+
+      chatluna-openai-like-adapter:n1bzsr:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        platform: openai-1
+        apiKeys: []
+        maxTokens: 128000
+        googleSearchSupportModel: []
+        maxContextRatio: 1
+        chatTimeLimit: 2000
+        temperature: 0.7
+        responseApi: false
+
+      chatluna-openai-like-adapter:z7k2qa:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        platform: openai-2
+        apiKeys: []
+        maxTokens: 128000
+        googleSearchSupportModel: []
+        maxContextRatio: 1
+        chatTimeLimit: 2000
+        temperature: 0.7
+        responseApi: true
+
+      ~chatluna-claude-adapter:vi9j5k:
+        apiKeys: []
+        maxRetries: 1
+        timeout: 120000
+        platform: claude-1
+        maxContextRatio: 1
+        chatConcurrentMaxSize: 5
+        chatTimeLimit: 2000
+
+      chatluna-google-gemini-adapter:y5n3xo:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        platform: gemini-1
+        apiKeys: []
+        maxTokens: 1048576
+        chatTimeLimit: 2000
+        maxContextRatio: 1
+        includeThoughts: true
+        geminiReadFilesTool: true
+        nonStreaming: true
+        timeout: 120000
+
+      chatluna-google-gemini-adapter:ej3ck8:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        platform: gemini-2
+        apiKeys: []
+        maxTokens: 1048576
+        chatTimeLimit: 2000
+        maxContextRatio: 1
+        geminiReadFilesTool: false
+        imageGeneration: true
+        nonStreaming: true
+        imageModelSearch: true
+        groundingContentDisplay: true
+        urlContext: true
+        googleSearch: true
+
+  sidebar-manager:cr25lm: {}
+  logger-plus:qfmeob:
+    showRecentLogsOnStartup: true
+    preservePausedPositionOnReturn: true
+  without-assignee:k8vraq: {}
+  ~change-auth-callme:dnomzi: {}
+  ffmpeg-path:vfc0y5:
+    autoDetect: false
+    loggerinfo: true
+    enableSilk: true
+  markdown:qxg5gc: {}

@@ -1,0 +1,27 @@
+name: chatluna-koishi-template
+
+services:
+  koishi:
+    build:
+      context: ./koishi
+      args:
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
+    container_name: chatluna-template-koishi
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      KOISHI_AUTH_USERNAME: ${KOISHI_AUTH_USERNAME:-admin}
+      KOISHI_AUTH_PASSWORD: ${KOISHI_AUTH_PASSWORD:-change-me}
+      BOT_QQ: ${BOT_QQ:-123456789}
+      ONEBOT_TOKEN: ${ONEBOT_TOKEN:-}
+    ports:
+      - "5140:5140"
+    volumes:
+      - ./koishi/data:/koishi/data
+      - ./koishi/locales:/koishi/locales
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

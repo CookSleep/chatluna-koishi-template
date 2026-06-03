@@ -1,0 +1,6 @@
+.env
+koishi/data/
+koishi/locales/
+koishi/node_modules/
+llbot/data/config_*.json
+llbot/qq/
