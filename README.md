@@ -40,7 +40,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 
 1. 使用 Koishi Windows 安装包安装 Koishi Desktop：<https://k.ilharp.cc/win.msi>。
 2. 如果需要接入 QQ，跟随 LLBot 文档完成 Windows 版下载、解压、启动和登录：<https://luckylillia.com/guide/choice_install>。
-3. 从[最新 Release](https://github.com/CookSleep/chatluna-koishi-template/releases/latest) 下载并解压本项目源码。
+3. 下载并解压[最新版本源码](https://github.com/CookSleep/chatluna-koishi-template/archive/refs/tags/v1.0.0.zip)。
 4. 安装 Python 3：<https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe>，并在安装时勾选"Add python.exe to PATH"。
 5. 运行脚本前，通过 任务栏右键 Koishi 图标 - 高级 - 停止并退出 以退出 Koishi Desktop。
 6. 双击运行 `一键配置-Windows-Desktop.bat`。
@@ -155,3 +155,7 @@ LLBot 的安装和配置请参阅官方文档：
 ## 安全说明
 
 请不要将填写后的 `.env`、LLBot 登录数据、QQ 登录数据或 Koishi 数据库公开上传。
+
+## 许可证
+
+本项目基于 GPL-3.0 协议发布。
