@@ -40,6 +40,34 @@ Docker 方式提供两种 Compose，二选一：
 <details>
 <summary><strong>🐳 方式一：Docker 部署</strong></summary>
 
+**方式 A：一次性安装器镜像（推荐）**
+
+安装器只运行一次，自动落盘模板文件并拉起业务容器，完成后退出。
+
+```bash
+docker run --rm -it \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /opt/chatluna-koishi-template:/opt/chatluna-koishi-template \
+  -e TARGET_DIR=/opt/chatluna-koishi-template \
+  -e KOISHI_AUTH_PASSWORD=change-me \
+  -e BOT_QQ=123456789 \
+  -e LLBOT_WEBUI_TOKEN=change-me \
+  ghcr.io/cooksleep/chatluna-koishi-template-installer:latest
+```
+
+可选环境变量：
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `TARGET_DIR` | 安装目录，需与 `-v` 挂载路径一致 | `/opt/chatluna-koishi-template` |
+| `INSTALL_MODE` | `full`（Koishi + LLBot）或 `koishi`（仅 Koishi） | `full` |
+| `NPM_REGISTRY` | npm 源 | `https://registry.npmjs.org` |
+| `START_CONTAINERS` | 设为 `0` 时只落盘不启动容器 | `1` |
+
+> 安装器镜像由 GitHub Actions 构建，推送 `v*` tag 时发布 `latest`；也可手动触发工作流。
+
+**方式 B：源码 Compose 部署**
+
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
 
 2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`。
@@ -126,7 +154,7 @@ ws://127.0.0.1:5140/onebot
 
 Koishi 插件依赖通过 npm registry 下载。本项目支持选择 npm 源：
 
-- **Docker**：通过 `.env` 中的 `NPM_REGISTRY` 选择。
+- **Docker**：通过 `.env` 中的 `NPM_REGISTRY` 选择（安装器镜像通过 `-e NPM_REGISTRY=...` 传入）。
 - **Windows Desktop**：运行脚本时交互选择，脚本会把结果写入 Koishi 实例的 `.yarnrc.yml`。
 
 > Koishi 自带的 `market` 的 `registry.endpoint` 似乎无效。
@@ -211,6 +239,14 @@ LLBot 的安装和配置请参阅官方文档：
 ├── docker-compose.koishi.yml     # 纯 Koishi 启动文件
 ├── 一键配置-Windows-Desktop.bat   # Windows 一键入口
 │
+├── .github/workflows/
+│   ├── build-windows-exe.yml      # Windows exe 构建工作流
+│   └── publish-installer-image.yml # Docker 安装器镜像发布工作流
+│
+├── installer/
+│   ├── Dockerfile                 # 一次性安装器镜像
+│   └── install.sh                 # 安装器入口脚本
+│
 ├── koishi/
 │   ├── Dockerfile
 │   ├── package.json              # 插件依赖
@@ -232,6 +268,8 @@ LLBot 的安装和配置请参阅官方文档：
 ## 🔒 安全说明
 
 请不要将填写后的 `.env`、LLBot 登录数据、QQ 登录数据或 Koishi 数据库公开上传。
+
+Docker 一次性安装器需要挂载 `/var/run/docker.sock`，这等同于授予安装器管理宿主机 Docker 的权限。请只运行你信任的镜像。
 
 ---
 

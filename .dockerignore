@@ -1,0 +1,10 @@
+.git
+.env
+__pycache__/
+*.py[cod]
+dist/
+koishi/data/
+koishi/locales/
+koishi/node_modules/
+llbot/data/
+llbot/qq/
