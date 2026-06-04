@@ -2,10 +2,8 @@
 
 # 🌙 ChatLuna Koishi 模板
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/CookSleep/chatluna-koishi-template?style=flat-square&color=eab308)](https://github.com/CookSleep/chatluna-koishi-template/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/CookSleep/chatluna-koishi-template?style=flat-square&color=3b82f6)](https://github.com/CookSleep/chatluna-koishi-template/network/members)
 [![License](https://img.shields.io/badge/license-GPL--3.0-10b981?style=flat-square)](https://github.com/CookSleep/chatluna-koishi-template/blob/main/LICENSE)
-[![Koishi](https://img.shields.io/badge/Koishi-4.18-20232A?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PC9zdmc+&logoColor=white)](https://koishi.chat/)
+[![Koishi](https://img.shields.io/badge/Koishi-4.18-5546a3?style=flat-square)](https://koishi.chat/)
 [![ChatLuna](https://img.shields.io/badge/ChatLuna-1.4-946ce6?style=flat-square)](https://chatluna.chat/)
 
 **以 ChatLuna 为核心的 Koishi 一键部署模板**
