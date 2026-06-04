@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌙 ChatLuna Koishi 模板
+# ChatLuna Koishi 模板
 
 [![License](https://img.shields.io/badge/license-GPL--3.0-10b981?style=flat-square)](https://github.com/CookSleep/chatluna-koishi-template/blob/main/LICENSE)
 [![Koishi](https://img.shields.io/badge/Koishi-4.18-5546a3?style=flat-square)](https://koishi.chat/)
