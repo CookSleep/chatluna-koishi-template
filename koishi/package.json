@@ -46,6 +46,7 @@
     "koishi-plugin-chatluna-agent": "1.0.31",
     "koishi-plugin-chatluna-character": "0.0.224",
     "koishi-plugin-chatluna-claude-adapter": "1.4.0-alpha.4",
+    "koishi-plugin-chatluna-deepseek-adapter": "1.4.0-alpha.6",
     "koishi-plugin-chatluna-forward-msg": "0.2.3",
     "koishi-plugin-chatluna-google-gemini-adapter": "1.4.0-alpha.3",
     "koishi-plugin-chatluna-google-reverse-image-search": "0.1.5",

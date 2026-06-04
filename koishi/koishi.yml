@@ -163,6 +163,7 @@ plugins:
 
       chatluna:s7f1za:
         attachForwardMsgIdToContext: true
+        isLog: true
 
       chatluna-character:2tvb1a: {}
 
@@ -286,6 +287,14 @@ plugins:
 
     group:b2ivz6:
       $label: LLM API
+
+      chatluna-deepseek-adapter:q4y8nb:
+        chatConcurrentMaxSize: 5
+        maxRetries: 1
+        apiKeys: []
+        maxContextRatio: 1
+        chatTimeLimit: 2000
+        temperature: 0.7
 
       chatluna-openai-like-adapter:n1bzsr:
         chatConcurrentMaxSize: 5
