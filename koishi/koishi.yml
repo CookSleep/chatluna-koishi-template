@@ -77,24 +77,11 @@ plugins:
         config:
           permissions:
             - authority: 3
-      status:
-        aliases:
-          status:
-            filter: false
       dialogue.stats:
         options:
           help:
             permissions:
               - authority: 3
-      help:
-        aliases:
-          help:
-            filter: false
-      chatluna:
-        aliases:
-          chatluna:
-            filter: false
-        name: /chatluna
     help:h3lo1q: {}
     http:4ctvvw: {}
     inspect:4ke26y: {}
