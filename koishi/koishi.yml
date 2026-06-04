@@ -11,7 +11,7 @@ plugins:
   group:h9we7k:
     $label: basic
     admin:kgf940: {}
-    ~bind:2311uf: {}
+    bind:2311uf: {}
     commands:xgp1rq:
       chatluna.preset.add:
         config:
@@ -291,7 +291,10 @@ plugins:
       chatluna-deepseek-adapter:q4y8nb:
         chatConcurrentMaxSize: 5
         maxRetries: 1
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://api.deepseek.com/v1
+            - true
         maxContextRatio: 1
         chatTimeLimit: 2000
         temperature: 0.7
@@ -300,7 +303,10 @@ plugins:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: openai-1
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://api.openai.com/v1
+            - true
         maxTokens: 128000
         googleSearchSupportModel: []
         maxContextRatio: 1
@@ -312,7 +318,10 @@ plugins:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: openai-2
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://api.openai.com/v1
+            - true
         maxTokens: 128000
         googleSearchSupportModel: []
         maxContextRatio: 1
@@ -321,7 +330,10 @@ plugins:
         responseApi: true
 
       ~chatluna-claude-adapter:vi9j5k:
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://api.anthropic.com/v1
+            - true
         maxRetries: 1
         timeout: 120000
         platform: claude-1
@@ -333,7 +345,10 @@ plugins:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: gemini-1
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://generativelanguage.googleapis.com/v1beta
+            - true
         maxTokens: 1048576
         chatTimeLimit: 2000
         maxContextRatio: 1
@@ -346,7 +361,10 @@ plugins:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: gemini-2
-        apiKeys: []
+        apiKeys:
+          - - ''
+            - https://generativelanguage.googleapis.com/v1beta
+            - true
         maxTokens: 1048576
         chatTimeLimit: 2000
         maxContextRatio: 1
