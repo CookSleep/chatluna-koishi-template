@@ -197,6 +197,8 @@ plugins:
         debugLogging: true
 
       ~chatluna-forward-msg:x8t4k2:
+        protocolService:
+          protocol: llbot
         imagePrompt: ''
         imageService: {}
         readTool: {}
