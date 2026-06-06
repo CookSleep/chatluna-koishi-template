@@ -29,6 +29,7 @@ APP_ROOT = app_root()
 TEMPLATE_KOISHI_YML = ROOT / "koishi" / "koishi.yml"
 TEMPLATE_PACKAGE_JSON = ROOT / "koishi" / "package.json"
 DEFAULT_NPM_REGISTRY = "https://registry.npmjs.org"
+DEFAULT_STORAGE_SERVER_PATH = "http://127.0.0.1:5140"
 
 
 def color(hex_color: str) -> tuple[int, int, int]:
@@ -518,6 +519,7 @@ def write_koishi_config(target_path: Path, username: str, password: str, bot_qq:
     }
     for source, value in replacements.items():
         content = content.replace(source, value.replace('"', '\\"'))
+    content = content.replace("serverPath: http://koishi:5140", f"serverPath: {DEFAULT_STORAGE_SERVER_PATH}")
     target = target_path / "koishi.yml"
     target.write_text(content, encoding="utf-8")
     ok(f"已写入：{target}")
@@ -626,6 +628,7 @@ def main() -> None:
     print()
     print("【后续检查】")
     warn("如果未能自动安装依赖，请在 Koishi Desktop 侧栏的依赖管理中更新依赖，或执行「koi.exe yarn -n 实例名 install」。")
+    warn("模型适配器默认全部关闭。请在 Koishi 控制台按需启用并填写 API Key。")
     warn("首次启动后，请在 Koishi 控制台启用「change-auth-callme」，并按提示给自己的 QQ 赋权。")
 
 

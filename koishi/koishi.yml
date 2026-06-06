@@ -158,6 +158,7 @@ plugins:
         maxStorageSize: 2048
         maxStorageCount: 99999
         storageBackend: local
+        serverPath: http://koishi:5140
         storeGeminiExtendedFileTypesInStorage: true
 
       chatluna-multimodal-service:8hxy4p:
@@ -277,7 +278,7 @@ plugins:
     group:b2ivz6:
       $label: LLM API
 
-      chatluna-deepseek-adapter:q4y8nb:
+      ~chatluna-deepseek-adapter:q4y8nb:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         apiKeys:
@@ -288,7 +289,7 @@ plugins:
         chatTimeLimit: 2000
         temperature: 0.7
 
-      chatluna-openai-like-adapter:n1bzsr:
+      ~chatluna-openai-like-adapter:n1bzsr:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: openai-1
@@ -303,7 +304,7 @@ plugins:
         temperature: 0.7
         responseApi: false
 
-      chatluna-openai-like-adapter:z7k2qa:
+      ~chatluna-openai-like-adapter:z7k2qa:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: openai-2
@@ -330,7 +331,7 @@ plugins:
         chatConcurrentMaxSize: 5
         chatTimeLimit: 2000
 
-      chatluna-google-gemini-adapter:y5n3xo:
+      ~chatluna-google-gemini-adapter:y5n3xo:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: gemini-1
@@ -346,7 +347,7 @@ plugins:
         nonStreaming: true
         timeout: 120000
 
-      chatluna-google-gemini-adapter:ej3ck8:
+      ~chatluna-google-gemini-adapter:ej3ck8:
         chatConcurrentMaxSize: 5
         maxRetries: 1
         platform: gemini-2

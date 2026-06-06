@@ -93,7 +93,7 @@ docker run --rm -it \
 <details>
 <summary><strong>🖥️ 方式二：Windows Desktop</strong></summary>
 
-Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，自动生成与 Docker 版一致的 Koishi 配置。
+Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，自动生成适合本机环境的 Koishi 配置。
 
 如果需要接入 QQ，可以额外安装并配置 LLBot Desktop。
 
@@ -120,7 +120,7 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 
 - 寻找 Koishi Desktop 实例目录或创建新实例
 - 备份旧的 `koishi.yml` 和 `package.json`
-- 写入与 Docker 版一致的 ChatLuna 模板配置
+- 写入适合 Windows Desktop 的 ChatLuna 模板配置
 - 同步与 Docker 版一致的插件依赖清单
 - 写入 `.yarnrc.yml`，让 Yarn 使用你在脚本中选择的 npm 源
 - 使用 Koishi Desktop 自带的 Yarn 安装插件依赖
@@ -189,7 +189,7 @@ docker compose up -d --build
    在 Koishi 插件配置中打开 `change-auth-callme`，遵循其指引为自己的 QQ 号赋予权限。否则部分指令无法使用。
 
 2. **配置 ChatLuna 插件**  
-   设置 LLM API、预设等。本项目默认未启用可选的、用于增加功能性的「扩展」插件，以及对新手上手难度较高的「高级」插件，你可以酌情根据官方文档进行配置。
+   设置 LLM API、预设等。模型适配器默认全部关闭，请按需启用并填写 API Key。本项目默认未启用可选的、用于增加功能性的「扩展」插件，以及对新手上手难度较高的「高级」插件，你可以酌情根据官方文档进行配置。
 
 详细的 ChatLuna 配置流程请参阅官方文档：
 
