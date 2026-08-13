@@ -54,6 +54,8 @@ docker run --rm -it \
   ghcr.io/cooksleep/chatluna-koishi-template-installer:latest
 ```
 
+> **重要**：新版 LLBot 使用直连协议，必须提供有效的 Auth Token 才能登录 QQ。请先前往 <https://auth.luckylillia.com> 获取 Token，再填入 `LLBOT_AUTH_TOKEN`。没有此 Token，LLBot 将无法完成 QQ 登录。
+
 可选环境变量：
 
 | 变量 | 说明 | 默认值 |
@@ -63,7 +65,7 @@ docker run --rm -it \
 | `NPM_REGISTRY` | npm 源 | `https://registry.npmjs.org` |
 | `START_CONTAINERS` | 设为 `0` 时只落盘不启动容器 | `1` |
 | `LLBOT_WEBUI_TOKEN` | LLBot WebUI 登录密码 | `change-me` |
-| `LLBOT_AUTH_TOKEN` | LLBot 直连协议 Auth Token，从 <https://auth.luckylillia.com> 获取 | `change-me` |
+| `LLBOT_AUTH_TOKEN` | **必填**。LLBot 直连协议登录 QQ 所需的 Auth Token，从 <https://auth.luckylillia.com> 获取 | `change-me` |
 | `LLBOT_WEBUI_PORT` | LLBot WebUI 端口 | `3080` |
 | `LLBOT_TAG` | LLBot 镜像版本 | `latest` |
 
