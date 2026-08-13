@@ -62,6 +62,10 @@ docker run --rm -it \
 | `INSTALL_MODE` | `full`（Koishi + LLBot）或 `koishi`（仅 Koishi） | `full` |
 | `NPM_REGISTRY` | npm 源 | `https://registry.npmjs.org` |
 | `START_CONTAINERS` | 设为 `0` 时只落盘不启动容器 | `1` |
+| `LLBOT_WEBUI_TOKEN` | LLBot WebUI 登录密码 | `change-me` |
+| `LLBOT_AUTH_TOKEN` | LLBot 直连协议 Auth Token，从 <https://auth.luckylillia.com> 获取 | `change-me` |
+| `LLBOT_WEBUI_PORT` | LLBot WebUI 端口 | `3080` |
+| `LLBOT_TAG` | LLBot 镜像版本 | `latest` |
 
 > 安装器镜像由 GitHub Actions 构建，推送 `v*` tag 时发布 `latest`；也可手动触发工作流。
 
