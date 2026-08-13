@@ -78,7 +78,7 @@ docker run --rm -it \
 
 2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`，并前往 <https://auth.luckylillia.com> 获取 `LLBOT_AUTH_TOKEN`。新版 LLBot 直连协议需要有效的 Auth Token 才能登录。
 
-3. 按你的网络环境选择 npm 源，并修改 `.env` 中的 `NPM_REGISTRY`，见下方「🌐 网络环境」。
+3. 按你的网络环境选择 npm 源，并修改 `.env` 中的 `NPM_REGISTRY`，见下方[「🌐 网络环境」](#network-environment)。
 
 4. 启动：
 
@@ -94,7 +94,7 @@ docker run --rm -it \
 
 6. 如使用 LLBot 方式，打开 LLBot WebUI：`http://服务器地址:3080`，完成 QQ 登录。
 
-7. 参考下方「⚙️ 首次配置」，完成剩余配置。
+7. 参考下方[「⚙️ 首次配置」](#first-time-setup)，完成剩余配置。
 
 </details>
 
@@ -154,6 +154,8 @@ ws://127.0.0.1:5140/onebot
 
 ---
 
+<a id="network-environment"></a>
+
 ## 🌐 网络环境
 
 Koishi 插件依赖通过 npm registry 下载。本项目支持选择 npm 源：
@@ -184,6 +186,8 @@ docker compose up -d --build
 ```
 
 ---
+
+<a id="first-time-setup"></a>
 
 ## ⚙️ 首次配置
 
