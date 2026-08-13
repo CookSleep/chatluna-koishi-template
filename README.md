@@ -31,13 +31,6 @@
 <details>
 <summary><strong>🐳 方式一：Docker 部署</strong></summary>
 
-Docker 方式提供两种 Compose，二选一：
-
-| 文件 | 说明 |
-|------|------|
-| `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
-| `docker-compose.yml` | 同时启动 Koishi + LLBot（直连协议单容器），自动通过 OneBot 11 反向 WS 对接 |
-
 **方式 A：一次性安装器镜像（推荐）**
 
 安装器只运行一次，自动落盘模板文件并拉起业务容器，完成后退出。
@@ -73,6 +66,13 @@ docker run --rm -it \
 | `LLBOT_TAG` | LLBot 镜像版本 | `latest` |
 
 **方式 B：源码 Compose 部署**
+
+提供两种 Compose 文件，二选一：
+
+| 文件 | 说明 |
+|------|------|
+| `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
+| `docker-compose.yml` | 同时启动 Koishi + LLBot（直连协议单容器），自动通过 OneBot 11 反向 WS 对接 |
 
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
 
