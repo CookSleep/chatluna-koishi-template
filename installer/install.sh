@@ -66,8 +66,7 @@ log "部署模式：$INSTALL_MODE"
 mkdir -p \
   "$TARGET_DIR/koishi/data" \
   "$TARGET_DIR/koishi/locales" \
-  "$TARGET_DIR/llbot/data" \
-  "$TARGET_DIR/llbot/qq"
+  "$TARGET_DIR/llbot/data"
 
 copy_file "$TEMPLATE_DIR/.env.example" "$TARGET_DIR/.env"
 copy_file "$TEMPLATE_DIR/docker-compose.yml" "$TARGET_DIR/docker-compose.yml"
@@ -85,8 +84,8 @@ for key in \
   BOT_QQ \
   ONEBOT_TOKEN \
   LLBOT_WEBUI_TOKEN \
+  LLBOT_AUTH_TOKEN \
   LLBOT_TAG \
-  PMHQ_TAG \
   LLBOT_WEBUI_PORT
 do
   apply_env_if_present "$key"

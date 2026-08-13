@@ -22,40 +22,26 @@ services:
     networks:
       - app_network
 
-  pmhq:
-    image: linyuchen/pmhq:${PMHQ_TAG:-latest}
-    container_name: chatluna-template-pmhq
-    privileged: true
-    restart: unless-stopped
-    environment:
-      ENABLE_HEADLESS: "false"
-      AUTO_LOGIN_QQ: ${BOT_QQ:-123456789}
-    volumes:
-      - ./llbot/qq:/root/.config/QQ
-      - ./llbot/data:/app/llbot/data:rw
-    networks:
-      - app_network
-
   llbot:
     image: linyuchen/llbot:${LLBOT_TAG:-latest}
     container_name: chatluna-template-llbot
     restart: unless-stopped
     depends_on:
       - koishi
-      - pmhq
     environment:
-      PMHQ_HOST: pmhq
+      AUTO_LOGIN_QQ: ${BOT_QQ:-123456789}
       WEBUI_PORT: ${LLBOT_WEBUI_PORT:-3080}
     ports:
       - "${LLBOT_WEBUI_PORT:-3080}:${LLBOT_WEBUI_PORT:-3080}"
     volumes:
-      - ./llbot/qq:/root/.config/QQ
       - ./llbot/data:/app/llbot/data:rw
     configs:
       - source: llbot_default_config
         target: /app/llbot/default_config.json
       - source: llbot_webui_token
         target: /app/llbot/data/webui_token.txt
+      - source: llbot_auth_token
+        target: /app/llbot/data/auth_token.txt
     networks:
       - app_network
 
@@ -115,6 +101,9 @@ configs:
   llbot_webui_token:
     content: |
       ${LLBOT_WEBUI_TOKEN:-change-me}
+  llbot_auth_token:
+    content: |
+      ${LLBOT_AUTH_TOKEN:-change-me}
 
 networks:
   app_network:

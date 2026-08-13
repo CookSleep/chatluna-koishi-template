@@ -33,7 +33,7 @@ Docker 方式提供两种 Compose，二选一：
 | 文件 | 说明 |
 |------|------|
 | `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
-| `docker-compose.yml` | 同时启动 Koishi + LLBot + PMHQ，自动通过 OneBot 11 反向 WS 对接 |
+| `docker-compose.yml` | 同时启动 Koishi + LLBot（直连协议单容器），自动通过 OneBot 11 反向 WS 对接 |
 
 <details>
 <summary><strong>🐳 方式一：Docker 部署</strong></summary>
@@ -50,6 +50,7 @@ docker run --rm -it \
   -e KOISHI_AUTH_PASSWORD=change-me \
   -e BOT_QQ=123456789 \
   -e LLBOT_WEBUI_TOKEN=change-me \
+  -e LLBOT_AUTH_TOKEN=从-auth.luckylillia.com-获取 \
   ghcr.io/cooksleep/chatluna-koishi-template-installer:latest
 ```
 
@@ -68,7 +69,7 @@ docker run --rm -it \
 
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
 
-2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`。
+2. 如使用 LLBot 方式，继续在 `.env` 中修改 `LLBOT_WEBUI_TOKEN`，并前往 <https://auth.luckylillia.com> 获取 `LLBOT_AUTH_TOKEN`。新版 LLBot 直连协议需要有效的 Auth Token 才能登录。
 
 3. 按你的网络环境选择 npm 源，并修改 `.env` 中的 `NPM_REGISTRY`，见下方「🌐 网络环境」。
 
@@ -257,8 +258,7 @@ LLBot 的安装和配置请参阅官方文档：
 │   └── setup_windows_desktop.py  # Windows Desktop 一键配置向导
 │
 └── llbot/
-    ├── data/                     # LLBot 配置数据（启动后生成）
-    └── qq/                       # QQ 登录数据（启动后生成）
+    └── data/                     # LLBot 配置、登录会话等持久化数据
 ```
 
 ---
