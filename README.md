@@ -72,8 +72,6 @@ docker run --rm -it \
 | `LLBOT_WEBUI_PORT` | LLBot WebUI 端口 | `3080` |
 | `LLBOT_TAG` | LLBot 镜像版本 | `latest` |
 
-> 安装器镜像由 GitHub Actions 构建，推送 `v*` tag 时发布 `latest`；也可手动触发工作流。
-
 **方式 B：源码 Compose 部署**
 
 1. 复制 `.env.example` 为 `.env`，修改 `BOT_QQ`、`KOISHI_AUTH_PASSWORD` 等字段。
@@ -124,8 +122,6 @@ Windows 用户建议使用 Koishi Desktop。本项目提供一键配置向导，
 
 如果使用源码包而不是 exe，请下载并解压[最新源码](https://github.com/CookSleep/chatluna-koishi-template/archive/refs/heads/main.zip)，安装 Python 3 并勾选 **"Add python.exe to PATH"**，然后双击运行 `一键配置-Windows-Desktop.bat`。
 
-> `ChatLuna-Koishi-Windows-Desktop-Setup.exe` 由 GitHub Actions 自动构建。手动运行工作流时，可在 Actions 的 artifact 中下载；推送 `v*` 版本 tag 时，会自动附加到对应 GitHub Release。
-
 **脚本会自动完成**
 
 - 寻找 Koishi Desktop 实例目录或创建新实例
@@ -164,8 +160,6 @@ Koishi 插件依赖通过 npm registry 下载。本项目支持选择 npm 源：
 
 - **Docker**：通过 `.env` 中的 `NPM_REGISTRY` 选择（安装器镜像通过 `-e NPM_REGISTRY=...` 传入）。
 - **Windows Desktop**：运行脚本时交互选择，脚本会把结果写入 Koishi 实例的 `.yarnrc.yml`。
-
-> Koishi 自带的 `market` 的 `registry.endpoint` 似乎无效。
 
 **国际网络**推荐使用官方源：
 
@@ -247,14 +241,6 @@ LLBot 的安装和配置请参阅官方文档：
 ├── docker-compose.koishi.yml     # 纯 Koishi 启动文件
 ├── 一键配置-Windows-Desktop.bat   # Windows 一键入口
 │
-├── .github/workflows/
-│   ├── build-windows-exe.yml      # Windows exe 构建工作流
-│   └── publish-installer-image.yml # Docker 安装器镜像发布工作流
-│
-├── installer/
-│   ├── Dockerfile                 # 一次性安装器镜像
-│   └── install.sh                 # 安装器入口脚本
-│
 ├── koishi/
 │   ├── Dockerfile
 │   ├── package.json              # 插件依赖
@@ -262,9 +248,6 @@ LLBot 的安装和配置请参阅官方文档：
 │   ├── .yarnrc.yml
 │   ├── data/                     # Koishi 运行数据（启动后生成）
 │   └── locales/                  # Koishi 本地化文件（启动后生成）
-│
-├── scripts/
-│   └── setup_windows_desktop.py  # Windows Desktop 一键配置向导
 │
 └── llbot/
     └── data/                     # LLBot 配置、登录会话等持久化数据
