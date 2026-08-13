@@ -28,15 +28,15 @@
 
 提供 **Docker** 与 **Windows Desktop** 两类入口。
 
+<details>
+<summary><strong>🐳 方式一：Docker 部署</strong></summary>
+
 Docker 方式提供两种 Compose，二选一：
 
 | 文件 | 说明 |
 |------|------|
 | `docker-compose.koishi.yml` | 仅启动 Koishi，用户自行对接 LLBot / NapCat 等 OneBot 实现 |
 | `docker-compose.yml` | 同时启动 Koishi + LLBot（直连协议单容器），自动通过 OneBot 11 反向 WS 对接 |
-
-<details>
-<summary><strong>🐳 方式一：Docker 部署</strong></summary>
 
 **方式 A：一次性安装器镜像（推荐）**
 
@@ -229,29 +229,6 @@ LLBot 的安装和配置请参阅官方文档：
 
 > `ONEBOT_TOKEN` 默认留空。如果启用 token，需要确保 Koishi 和 OneBot 实现使用相同的 token。  
 > Docker 版中 Koishi 和 LLBot 会同时读取 `.env` 中的同一个环境变量。
-
----
-
-## 📁 目录说明
-
-```text
-.
-├── .env.example                  # 环境变量示例
-├── docker-compose.yml            # Koishi + LLBot 启动文件
-├── docker-compose.koishi.yml     # 纯 Koishi 启动文件
-├── 一键配置-Windows-Desktop.bat   # Windows 一键入口
-│
-├── koishi/
-│   ├── Dockerfile
-│   ├── package.json              # 插件依赖
-│   ├── koishi.yml                # Koishi 配置
-│   ├── .yarnrc.yml
-│   ├── data/                     # Koishi 运行数据（启动后生成）
-│   └── locales/                  # Koishi 本地化文件（启动后生成）
-│
-└── llbot/
-    └── data/                     # LLBot 配置、登录会话等持久化数据
-```
 
 ---
 
