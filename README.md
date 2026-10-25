@@ -19,7 +19,7 @@
 
 ### 🧩 预装插件
 - **ChatLuna 基础**：`chatluna`、`chatluna-character`、`chatluna-storage-service`、`chatluna-multimodal-service`，默认启用。
-- **扩展**：`chatluna-plugin-common`、`chatluna-toolbox`、`chatluna-long-memory`、`chatluna-forward-msg`、`chatluna-llm-web-search`、`chatluna-qweather`、`chatluna-social-media-reader`、`chatluna-google-reverse-image-search`、`memesluna` 等，已装好但默认关闭。
+- **扩展**：`chatluna-plugin-common`、`chatluna-toolbox`、`chatluna-long-memory`、`chatluna-forward-msg`、`chatluna-llm-web-search`、`chatluna-qweather`、`chatluna-social-media-reader`、`chatluna-google-reverse-image-search`、`chatluna-memes` 等，已装好但默认关闭。
 - **高级**：`chatluna-agent`、`media-luna`、`chatluna-vector-store-service`，上手难度较高，默认关闭。
 - **模型适配器**：DeepSeek、OpenAI 兼容、Claude、Gemini 适配器已预置，默认全部关闭，按需启用并填写 API Key。
 - **辅助插件**：`sidebar-manager`、`logger-plus`、`without-assignee`、`change-auth-callme`、`ffmpeg-path`、`markdown`。

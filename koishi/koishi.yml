@@ -220,7 +220,7 @@ plugins:
             engine: Basic
         longMemoryExtractInterval: 10
 
-      ~memesluna:f3ys03: {}
+      ~chatluna-memes:cm7k2p: {}
 
       ~chatluna-llm-web-search:ru2yje:
         webModelService: {}
