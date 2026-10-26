@@ -100,7 +100,6 @@ plugins:
       admin:
         username: "${{ env.KOISHI_AUTH_USERNAME }}"
         password: "${{ env.KOISHI_AUTH_PASSWORD }}"
-    auth-cleanup:a7c3k9: {}
     config:n6mlee: {}
     console:0f7c8z:
       open: true
@@ -373,6 +372,7 @@ plugins:
     preservePausedPositionOnReturn: true
   without-assignee:k8vraq: {}
   ~change-auth-callme:dnomzi: {}
+  auth-cleanup:a7c3k9: {}
   ffmpeg-path:vfc0y5:
     autoDetect: false
     loggerinfo: true
